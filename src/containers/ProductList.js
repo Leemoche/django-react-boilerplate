@@ -4,7 +4,6 @@ import { Button, Container, Icon, Message, Item, Dimmer, Label, Segment, Image, 
 import { productListURL } from './constants';
 
 
-const paragraph = <Image src='/images/wireframe/short-paragraph.png' />
 
 class ProductList extends React.Component {
 
@@ -31,39 +30,41 @@ class ProductList extends React.Component {
     const { data, error, loading } = this.state;
     return (
       <Container>
-        {error && <Message
+        {error && (<Message
           error
           header='There was some errors with your submission'
           content={JSON.stringify(error)}
-        />}
-        {loading && <Segment>
+        />)}
+        {loading && (<Segment>
           <Dimmer active inverted>
             <Loader inverted>Loading</Loader>
           </Dimmer>
           <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-        </Segment>}
+        </Segment>)}
 
         <Item.Group divided>
-          <Item>
-            <Item.Image src='/images/wireframe/image.png' />
+          {data.map(item => {
+            return <Item key={item.id}>
+              <Item.Image src={item.image} />
 
-            <Item.Content>
-              <Item.Header as='a'>My Neighbor Totoro</Item.Header>
-              <Item.Meta>
-                <span className='cinema'>IFC Cinema</span>
-              </Item.Meta>
-              <Item.Description>{paragraph}</Item.Description>
-              <Item.Extra>
-                <Button primary floated='right' icon labelPosition="right">
-                  Add to Cart
-                  <Icon name='cart plus' />
-                </Button>
-                <Label>Limited</Label>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+              <Item.Content>
+                <Item.Header as='a'>{item.title}</Item.Header>
+                <Item.Meta>
+                  <span className='cinema'>{item.category}</span>
+                </Item.Meta>
+                <Item.Description>{item.description}</Item.Description>
+                <Item.Extra>
+                  <Button primary floated='right' icon labelPosition="right">
+                    Add to Cart
+                    <Icon name='cart plus' />
+                  </Button>
+                  {item.discount_price && <Label>{item.lable}</Label>}
+                </Item.Extra>
+              </Item.Content>
+            </Item>
 
 
+          })}
         </Item.Group>
       </Container>
     );
