@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
 import { Button, Container, Icon, Message, Item, Dimmer, Label, Segment, Image, Loader } from 'semantic-ui-react';
 import { productListURL } from '../constants'; //from raw learnings 
-import { productListURL } from './constants'; //auto filled correctly
+//import { productListURL } from './constants'; //auto filled correctly
 
 
 
@@ -19,7 +19,7 @@ class ProductList extends React.Component {
     axios
       .get(productListURL)
       .then(res => {
-        console.log(res.data)
+        //console.log(res.data)
         this.setState({ data: res.data, loading: false });
       })
       .catch(err => {
