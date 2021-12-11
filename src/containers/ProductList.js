@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios';
-import { Button, Container, Icon, Message, Item, Dimmer, Label, Segment, Image, Loader } from 'semantic-ui-react'
-import { productListURL } from './constants';
+import { Button, Container, Icon, Message, Item, Dimmer, Label, Segment, Image, Loader } from 'semantic-ui-react';
+import { productListURL } from '../constants'; //from raw learnings 
+import { productListURL } from './constants'; //auto filled correctly
 
 
 
